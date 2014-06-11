@@ -23,7 +23,7 @@ FB.getLoginStatus(function(response) {
         var uid = response.authResponse.userID;
     	var accessToken = response.authResponse.accessToken;
     	// 呼叫api把圖片放到#preview IMG tag 內
-    	FB.api('/me/picture', function (response) { // /me/picture?type=large
+    	FB.api('me/picture?type=large', function (response) {
 			$('#preview-img').html("<h5>Here are your profile photo</h5><img id=\"preview1\" crossorigin=\"anonymous\" src="+response.data.url+" />");          
 			//crossorigin: refer to CORS Policy
     	});
