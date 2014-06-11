@@ -20,8 +20,8 @@ FB.getLoginStatus(function (response) {
 	if (response.status === 'connected') {
     // the user is logged in and has authenticated your app, and response.authResponse supplies the user's ID, a valid access token, a signed
     // request, and the time the access token and signed request each expire
-        //var uid = response.authResponse.userID;
-    	window.authToken = response.authResponse.accessToken;
+        var uid = response.authResponse.userID;
+    	var accessToken = response.authResponse.accessToken;
     	// 呼叫api把圖片放到#preview IMG tag 內
     	FB.api('me/picture?type=large', function (response) {
 			$('#preview-img').html("<h5>Here are your profile photo</h5><img id=\"preview1\" crossorigin=\"anonymous\" src="+response.data.url+" />");          
