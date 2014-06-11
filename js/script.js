@@ -15,15 +15,6 @@ window.fbAsyncInit = function () {//facebook init
     });
 
 
-FB.getLoginStatus(function(response) {
-  if (response.status === 'connected') {
-
-    var accessToken = response.authResponse.accessToken;
-  } else if (response.status === 'not_authorized') {
-
-  } else {
-  }
- });
 
 FB.getLoginStatus(function(response) {
 	if (response.status === 'connected') {
