@@ -16,7 +16,7 @@ window.fbAsyncInit = function () {//facebook init
 
 
 
-FB.getLoginStatus(function(response) {
+FB.getLoginStatus(function (response) {
 	if (response.status === 'connected') {
     // the user is logged in and has authenticated your app, and response.authResponse supplies the user's ID, a valid access token, a signed
     // request, and the time the access token and signed request each expire
