@@ -20,8 +20,8 @@ FB.getLoginStatus(function (response) {
 	if (response.status === 'connected') {
     // the user is logged in and has authenticated your app, and response.authResponse supplies the user's ID, a valid access token, a signed
     // request, and the time the access token and signed request each expire
-        var uid = response.authResponse.userID;
-    	window.accessToken = response.authResponse.accessToken;
+        //var uid = response.authResponse.userID;
+    	window.authToken = response.authResponse.accessToken;
     	// 呼叫api把圖片放到#preview IMG tag 內
     	FB.api('me/picture?type=large', function (response) {
 			$('#preview-img').html("<h5>Here are your profile photo</h5><img id=\"preview1\" crossorigin=\"anonymous\" src="+response.data.url+" />");          
@@ -154,7 +154,7 @@ FB.getLoginStatus(function (response) {
 
 
 // Post a BASE64 Encoded PNG Image to facebook，以下程式為把照片po到facebook的方法，基本上這樣就可以不用動了，但思考authToken該怎麼拿到，因為這裡我並沒有把使用者登入的token載入到這函數內，所以它是不會得到token的
-function PostImageToFacebook(accessToken) {
+function PostImageToFacebook(authToken) {
 	$('.info').append('<img src="img/loading.gif"/>')//載入loading的img
     var canvas = document.getElementById("canvas");//找canvas
     var imageData = canvas.toDataURL("image/png");//把canvas轉換PNG
@@ -164,7 +164,7 @@ function PostImageToFacebook(accessToken) {
         console.log(e);//錯誤訊息的log
     }
     var fd = new FormData();
-    fd.append("access_token", accessToken);//請思考accesstoken要怎麼傳到這function內
+    fd.append("access_token", authToken);//請思考accesstoken要怎麼傳到這function內
     fd.append("source", blob);//輸入的照片
     fd.append("message", "這是HTML5 canvas和Facebook API結合教學");//輸入的訊息
     try {
