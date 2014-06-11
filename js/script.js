@@ -24,7 +24,7 @@ FB.getLoginStatus(function(response) {
     	var accessToken = response.authResponse.accessToken;
     	// 呼叫api把圖片放到#preview IMG tag 內
     	FB.api('/me/picture', function (response) { // /me/picture?type=large
-			$('#preview-img').html("<h5>Here are your profile photo</h5><img id=\"preview1\" crossorigin=\"anonymous\" response="+response.data.url+" />");          
+			$('#preview-img').html("<h5>Here are your profile photo</h5><img id=\"preview1\" crossorigin=\"anonymous\" src="+response.data.url+" />");          
 			//crossorigin: refer to CORS Policy
     	});
 
@@ -45,7 +45,7 @@ FB.getLoginStatus(function(response) {
 			if (response.authResponse) {
         		window.location.reload();
         	}
-		},
+		});
   	}
 });
 
